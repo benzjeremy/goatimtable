@@ -7,9 +7,9 @@
 [![License: GPL-3.0](https://img.shields.io/badge/License-GPL--3.0-blue.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Windows-lightgrey)](#installation)
 
-> 🌐 **Official Website:** [https://pi5.darter-basking.ts.net/untis-go/](https://pi5.darter-basking.ts.net/untis-go/)
+> 🌐 **Official Website:** [https://untis-go.darter-basking.ts.net/](https://untis-go.darter-basking.ts.net/)
 > 
-> 📖 **Official Wiki & Documentation:** [https://pi5.darter-basking.ts.net/untis-go/wiki/](https://pi5.darter-basking.ts.net/untis-go/wiki/)
+> 📖 **Official Wiki & Documentation:** [https://untis-go.darter-basking.ts.net/wiki/](https://untis-go.darter-basking.ts.net/wiki/)
 
 > [!IMPORTANT]
 > ### 🚧 Pre-Release / Active Development Notice
@@ -152,13 +152,13 @@ Bug reports and contributions are welcome:
 ## 📚 Wiki & Documentation
 
 Detailed documentation and step-by-step guides are available in our official web wiki:  
-👉 **[untis-go Wiki: https://pi5.darter-basking.ts.net/untis-go/wiki/](https://pi5.darter-basking.ts.net/untis-go/wiki/)**
+👉 **[untis-go Wiki: https://untis-go.darter-basking.ts.net/wiki/](https://untis-go.darter-basking.ts.net/wiki/)**
 
-- **Getting Started & Onboarding**: [Getting Started Guide](https://pi5.darter-basking.ts.net/untis-go/wiki/#quickstart)
-- **Feature Deep Dive**: [Timetables, Homework & Absences](https://pi5.darter-basking.ts.net/untis-go/wiki/#features)
-- **Installation**: [Linux & Windows Setup](https://pi5.darter-basking.ts.net/untis-go/wiki/#installation)
-- **Security Architecture**: [AES-256-GCM & PBKDF2](https://pi5.darter-basking.ts.net/untis-go/wiki/#security)
-- **FAQ & Troubleshooting**: [Frequently Asked Questions](https://pi5.darter-basking.ts.net/untis-go/wiki/#faq)
+- **Getting Started & Onboarding**: [Getting Started Guide](https://untis-go.darter-basking.ts.net/wiki/#quickstart)
+- **Feature Deep Dive**: [Timetables, Homework & Absences](https://untis-go.darter-basking.ts.net/wiki/#features)
+- **Installation**: [Linux & Windows Setup](https://untis-go.darter-basking.ts.net/wiki/#installation)
+- **Security Architecture**: [AES-256-GCM & PBKDF2](https://untis-go.darter-basking.ts.net/wiki/#security)
+- **FAQ & Troubleshooting**: [Frequently Asked Questions](https://untis-go.darter-basking.ts.net/wiki/#faq)
 
 ---
 
