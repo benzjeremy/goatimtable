@@ -7,9 +7,9 @@
 [![License: GPL-3.0](https://img.shields.io/badge/License-GPL--3.0-blue.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Windows-lightgrey)](#installation)
 
-> 🌐 **Official Website:** [https://untis-go.darter-basking.ts.net/](https://untis-go.darter-basking.ts.net/)
+> 🌐 **Official Website:** [https://untis-go.benzjeremy.pp.ua/](https://untis-go.benzjeremy.pp.ua/)
 > 
-> 📖 **Official Wiki & Documentation:** [https://untis-go.darter-basking.ts.net/wiki/](https://untis-go.darter-basking.ts.net/wiki/)
+> 📖 **Official Wiki & Documentation:** [https://untis-go.benzjeremy.pp.ua/wiki/](https://untis-go.benzjeremy.pp.ua/wiki/)
 
 > [!IMPORTANT]
 > ### 🚧 Pre-Release / Active Development Notice
@@ -152,13 +152,13 @@ Bug reports and contributions are welcome:
 ## 📚 Wiki & Documentation
 
 Detailed documentation and step-by-step guides are available in our official web wiki:  
-👉 **[untis-go Wiki: https://untis-go.darter-basking.ts.net/wiki/](https://untis-go.darter-basking.ts.net/wiki/)**
+👉 **[untis-go Wiki: https://untis-go.benzjeremy.pp.ua/wiki/](https://untis-go.benzjeremy.pp.ua/wiki/)**
 
-- **Getting Started & Onboarding**: [Getting Started Guide](https://untis-go.darter-basking.ts.net/wiki/#quickstart)
-- **Feature Deep Dive**: [Timetables, Homework & Absences](https://untis-go.darter-basking.ts.net/wiki/#features)
-- **Installation**: [Linux & Windows Setup](https://untis-go.darter-basking.ts.net/wiki/#installation)
-- **Security Architecture**: [AES-256-GCM & PBKDF2](https://untis-go.darter-basking.ts.net/wiki/#security)
-- **FAQ & Troubleshooting**: [Frequently Asked Questions](https://untis-go.darter-basking.ts.net/wiki/#faq)
+- **Getting Started & Onboarding**: [Getting Started Guide](https://untis-go.benzjeremy.pp.ua/wiki/#quickstart)
+- **Feature Deep Dive**: [Timetables, Homework & Absences](https://untis-go.benzjeremy.pp.ua/wiki/#features)
+- **Installation**: [Linux & Windows Setup](https://untis-go.benzjeremy.pp.ua/wiki/#installation)
+- **Security Architecture**: [AES-256-GCM & PBKDF2](https://untis-go.benzjeremy.pp.ua/wiki/#security)
+- **FAQ & Troubleshooting**: [Frequently Asked Questions](https://untis-go.benzjeremy.pp.ua/wiki/#faq)
 
 ---
 
