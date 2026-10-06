@@ -169,8 +169,8 @@ Detailed documentation and step-by-step guides are available in our official web
 
 ## Project rename
 
-untis-go is now **goatimtable**. This project remains in development (pre-release). Existing local data continues to use the legacy storage directory for compatibility.
-Users upgrading from v2.4.1 or earlier must download this release manually: the old updater only accepts the former repository path and executable name.
+**goatimtable v2.5** is the current pre-release. Existing local data continues to use the legacy `untis-go` storage directory for compatibility.
+Users upgrading from v2.4.1 or earlier must download v2.5 manually: the old updater only accepts the former repository path and executable name.
 
 ## A personal note from Jeremy Benz
 
