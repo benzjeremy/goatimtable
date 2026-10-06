@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/benzjeremy/untis-go/api"
+	"github.com/benzjeremy/goatimtable/api"
 )
 
 func TestEscapeText(t *testing.T) {

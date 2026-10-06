@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/benzjeremy/untis-go/api"
+	"github.com/benzjeremy/goatimtable/api"
 )
 
 type ChangeType string

@@ -234,7 +234,7 @@ func SearchSchool(query string) ([]SchoolSearchResult, error) {
 	}
 
 	reqBody := map[string]interface{}{
-		"id":      "untis-go-search",
+		"id":      "goatimtable-search",
 		"jsonrpc": "2.0",
 		"method":  "searchSchool",
 		"params": []map[string]string{

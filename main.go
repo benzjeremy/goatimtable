@@ -8,8 +8,8 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/benzjeremy/untis-go/db"
-	"github.com/benzjeremy/untis-go/server"
+	"github.com/benzjeremy/goatimtable/db"
+	"github.com/benzjeremy/goatimtable/server"
 )
 
 const AppVersion = server.AppVersion
@@ -21,7 +21,7 @@ func main() {
 	flag.Parse()
 
 	log.Println("==================================================")
-	log.Printf(" Untis Stundenplan-Anwendung (Go) v%s\n", AppVersion)
+	log.Printf(" goatimtable-Anwendung (Go) v%s\n", AppVersion)
 	log.Println(" Release: PC-Desktop Remake (GPL-3.0 Lizenz)")
 	log.Println("==================================================")
 
@@ -79,13 +79,13 @@ func main() {
 		os.Exit(0)
 	}()
 
-	windowTitle := "Untis Stundenplan"
+	windowTitle := "goatimtable"
 	if activeProf != nil && activeProf.School != "" {
 		userName := activeProf.Name
 		if activeProf.Username != "" {
 			userName = activeProf.Username
 		}
-		windowTitle = fmt.Sprintf("Untis Stundenplan - %s - %s", activeProf.School, userName)
+		windowTitle = fmt.Sprintf("goatimtable - %s - %s", activeProf.School, userName)
 	}
 
 	// Launch native WebKitGTK (hardware accelerated) or browser

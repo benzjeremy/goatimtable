@@ -1,4 +1,4 @@
-module github.com/benzjeremy/untis-go
+module github.com/benzjeremy/goatimtable
 
 go 1.27.0
 

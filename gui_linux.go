@@ -41,8 +41,8 @@ static void set_window_icon_from_memory(GtkWindow *window, const void *buf, gsiz
         }
         g_object_unref(loader);
     }
-    gtk_window_set_default_icon_name("untis-go");
-    gtk_window_set_icon_name(window, "untis-go");
+    gtk_window_set_default_icon_name("goatimtable");
+    gtk_window_set_icon_name(window, "goatimtable");
 }
 
 static gboolean on_context_menu(WebKitWebView *web_view, WebKitContextMenu *context_menu, GdkEvent *event, WebKitHitTestResult *hit_test_result, gpointer user_data) {
@@ -77,11 +77,11 @@ static void on_tray_quit(GtkMenuItem *item, gpointer user_data) {
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 static void setup_tray_indicator(GtkWidget *window, GtkWidget *webview) {
-    AppIndicator *indicator = app_indicator_new("untis-go", "untis-go", APP_INDICATOR_CATEGORY_APPLICATION_STATUS);
+    AppIndicator *indicator = app_indicator_new("goatimtable", "goatimtable", APP_INDICATOR_CATEGORY_APPLICATION_STATUS);
     if (!indicator) return;
 
     app_indicator_set_status(indicator, APP_INDICATOR_STATUS_ACTIVE);
-    app_indicator_set_title(indicator, "untis-go");
+    app_indicator_set_title(indicator, "goatimtable");
 
     GtkWidget *menu = gtk_menu_new();
 
@@ -119,8 +119,8 @@ static void run_gtk_window(const char *title, const char *url, int width, int he
         return;
     }
 
-    g_set_prgname("untis-go");
-    g_set_application_name("Untis Desktop");
+    g_set_prgname("goatimtable");
+    g_set_application_name("goatimtable");
 
     GtkWidget *window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_title(GTK_WINDOW(window), title);
@@ -164,7 +164,7 @@ import (
 	"path/filepath"
 	"unsafe"
 
-	"github.com/benzjeremy/untis-go/web"
+	"github.com/benzjeremy/goatimtable/web"
 )
 
 func init() {
@@ -187,31 +187,31 @@ func installDesktopIntegration() {
 
 	iconPng, _ := web.Assets.ReadFile("icon.png")
 	if len(iconPng) > 0 {
-		_ = os.WriteFile(filepath.Join(iconDir, "untis-go.png"), iconPng, 0644)
-		_ = os.WriteFile(filepath.Join(pixmapDir, "untis-go.png"), iconPng, 0644)
+		_ = os.WriteFile(filepath.Join(iconDir, "goatimtable.png"), iconPng, 0644)
+		_ = os.WriteFile(filepath.Join(pixmapDir, "goatimtable.png"), iconPng, 0644)
 	}
 	iconSvg, _ := web.Assets.ReadFile("icon.svg")
 	if len(iconSvg) > 0 {
 		svgDir := filepath.Join(home, ".local", "share", "icons", "hicolor", "scalable", "apps")
 		_ = os.MkdirAll(svgDir, 0755)
-		_ = os.WriteFile(filepath.Join(svgDir, "untis-go.svg"), iconSvg, 0644)
+		_ = os.WriteFile(filepath.Join(svgDir, "goatimtable.svg"), iconSvg, 0644)
 	}
 
-	desktopPath := filepath.Join(appDir, "untis-go.desktop")
+	desktopPath := filepath.Join(appDir, "goatimtable.desktop")
 	execPath, _ := os.Executable()
 	if execPath == "" {
-		execPath = "untis-go"
+		execPath = "goatimtable"
 	}
 	content := fmt.Sprintf(`[Desktop Entry]
-Name=Untis Stundenplan
-Comment=Untis Stundenplan Desktop-Anwendung
+Name=goatimtable
+Comment=goatimtable Desktop-Anwendung
 Exec=%s
-Icon=untis-go
+Icon=goatimtable
 Terminal=false
 Type=Application
 Categories=Education;Office;
-StartupWMClass=untis-go
-X-Wayland-AppID=untis-go
+StartupWMClass=goatimtable
+X-Wayland-AppID=goatimtable
 `, execPath)
 	_ = os.WriteFile(desktopPath, []byte(content), 0644)
 }

@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/benzjeremy/untis-go/db"
+	"github.com/benzjeremy/goatimtable/db"
 )
 
 func TestServerSecurityAndEndpoints(t *testing.T) {
@@ -33,8 +33,8 @@ func TestServerSecurityAndEndpoints(t *testing.T) {
 	defer srv.Stop()
 
 	token := srv.GetSessionToken()
-	if len(token) != 32 {
-		t.Fatalf("expected 32-character session token, got length %d: %s", len(token), token)
+	if len(token) != 64 {
+		t.Fatalf("expected 64-character session token, got length %d: %s", len(token), token)
 	}
 
 	// 1. Test unauthenticated request to /api/status (must fail with 401 Unauthorized)

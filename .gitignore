@@ -1,6 +1,6 @@
 # Binaries
-untis-go
-/untis-go
+goatimtable
+/goatimtable
 *.exe
 *.exe~
 *.dll

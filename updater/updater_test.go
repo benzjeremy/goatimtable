@@ -37,7 +37,7 @@ func TestExtractFromTarGz(t *testing.T) {
 
 	content := []byte("binary-content-test")
 	hdr := &tar.Header{
-		Name: "untis-go",
+		Name: "goatimtable",
 		Mode: 0755,
 		Size: int64(len(content)),
 	}
@@ -64,7 +64,7 @@ func TestExtractFromZip(t *testing.T) {
 	zw := zip.NewWriter(&buf)
 
 	content := []byte("binary-content-zip-test")
-	f, err := zw.Create("untis-go.exe")
+	f, err := zw.Create("goatimtable.exe")
 	if err != nil {
 		t.Fatalf("Create in zip failed: %v", err)
 	}

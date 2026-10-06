@@ -1,29 +1,29 @@
-# 🗓️ untis-go
+# 🗓️ goatimtable
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/benzjeremy/untis-go.svg)](https://pkg.go.dev/github.com/benzjeremy/untis-go)
-[![Go Report Card](https://goreportcard.com/badge/github.com/benzjeremy/untis-go.svg)](https://goreportcard.com/report/github.com/benzjeremy/untis-go)
-[![Release](https://img.shields.io/github/v/release/benzjeremy/untis-go)](https://github.com/benzjeremy/untis-go/releases/latest)
-[![Status: Pre-Release](https://img.shields.io/badge/Status-Pre--Release%20%2F%20WIP-orange.svg)](https://github.com/benzjeremy/untis-go)
+[![Go Reference](https://pkg.go.dev/badge/github.com/benzjeremy/goatimtable.svg)](https://pkg.go.dev/github.com/benzjeremy/goatimtable)
+[![Go Report Card](https://goreportcard.com/badge/github.com/benzjeremy/goatimtable.svg)](https://goreportcard.com/report/github.com/benzjeremy/goatimtable)
+[![Release](https://img.shields.io/github/v/release/benzjeremy/goatimtable)](https://github.com/benzjeremy/goatimtable/releases)
+[![Status: Pre-Release](https://img.shields.io/badge/Status-Pre--Release%20%2F%20WIP-orange.svg)](https://github.com/benzjeremy/goatimtable)
 [![License: GPL-3.0](https://img.shields.io/badge/License-GPL--3.0-blue.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Windows-lightgrey)](#installation)
 
-> 🌐 **Official Website:** [https://untis-go.benzjeremy.pp.ua/](https://untis-go.benzjeremy.pp.ua/)
+> 🌐 **Official Website:** [https://goatimtable.benzjeremy.pp.ua/](https://goatimtable.benzjeremy.pp.ua/)
 > 
-> 📖 **Official Wiki & Documentation:** [https://untis-go.benzjeremy.pp.ua/wiki/](https://untis-go.benzjeremy.pp.ua/wiki/)
+> 📖 **Official Wiki & Documentation:** [https://goatimtable.benzjeremy.pp.ua/wiki/](https://goatimtable.benzjeremy.pp.ua/wiki/)
 
 > [!IMPORTANT]
 > ### 🚧 Pre-Release / Active Development Notice
 > **This software is not yet finished and is actively being worked on.**  
 > All versions (including `v2.3`) are **Pre-Releases** (Work in Progress), even if not originally announced as such. Active development, architectural refinements, and feature updates are ongoing.  
-> If you encounter **errors, display bugs, or unexpected behavior**, please open an issue directly under [**GitHub Issues**](https://github.com/benzjeremy/untis-go/issues)! Feedback and pull requests are warmly welcome.
+> If you encounter **errors, display bugs, or unexpected behavior**, please open an issue directly under [**GitHub Issues**](https://github.com/benzjeremy/goatimtable/issues)! Feedback and pull requests are warmly welcome.
 
 ---
 
-## 🎯 What is Untis GO?
+## 🎯 What is goatimtable?
 
 A fast, native, and modern **WebUntis PC desktop client for students and teachers** – written in Go with a sleek desktop shell (inspired by clean sidebars of apps like Discord and Spotify Desktop).
 
-Forget slow web interfaces, cluttered layouts, or resource-heavy web wrappers. **untis-go** brings your timetable, substitution schedules, homework, announcements, and absences lightning-fast and cross-platform to your desktop – **without Electron bloat!**
+Forget slow web interfaces, cluttered layouts, or resource-heavy web wrappers. **goatimtable** brings your timetable, substitution schedules, homework, announcements, and absences lightning-fast and cross-platform to your desktop – **without Electron bloat!**
 
 ---
 
@@ -80,26 +80,26 @@ Forget slow web interfaces, cluttered layouts, or resource-heavy web wrappers. *
 
 ### 1. Download Precompiled Packages (Recommended)
 
-Download the matching file for your operating system from the [**Releases**](https://github.com/benzjeremy/untis-go/releases) page:
+Download the matching file for your operating system from the [**Releases**](https://github.com/benzjeremy/goatimtable/releases) page:
 
 - **Linux (x86_64)**:
   ```bash
-  tar -xzf untis-go-v2.4.1-linux.tar.gz
-  sudo cp untis-go /usr/local/bin/
-  untis-go
+  tar -xzf goatimtable-v2.5-linux-amd64.tar.gz
+  sudo cp goatimtable /usr/local/bin/
+  goatimtable
   ```
 - **Windows (x86_64)**:
-  - Unzip `untis-go-v2.4.1-windows.zip` and run `untis-go.exe`.
+  - Unzip `goatimtable-v2.5-windows-amd64.zip` and run `goatimtable.exe`.
 
 ### 2. Installation via Go (`go install`)
 
 If you have Go (version 1.21 or newer) installed:
 
 ```bash
-go install github.com/benzjeremy/untis-go@latest
+go install github.com/benzjeremy/goatimtable@latest
 ```
 
-The binary will be compiled automatically into your `$GOPATH/bin` (or `~/go/bin`) and can be called directly as `untis-go` in your terminal.
+The binary will be compiled automatically into your `$GOPATH/bin` (or `~/go/bin`) and can be called directly as `goatimtable` in your terminal.
 
 ### 3. Compile from Source
 
@@ -113,14 +113,14 @@ The binary will be compiled automatically into your `$GOPATH/bin` (or `~/go/bin`
 #### Building:
 ```bash
 # 1. Clone the repository
-git clone https://github.com/benzjeremy/untis-go.git
-cd untis-go
+git clone https://github.com/benzjeremy/goatimtable.git
+cd goatimtable
 
 # 2. Build binary
-go build -o untis-go .
+go build -o goatimtable .
 
 # 3. Launch
-./untis-go
+./goatimtable
 ```
 
 ---
@@ -140,7 +140,7 @@ go build -o untis-go .
 ## 🐛 Bug Reports & Contributing
 
 Bug reports and contributions are welcome:
-1. Open the [**Issues**](https://github.com/benzjeremy/untis-go/issues) tab.
+1. Open the [**Issues**](https://github.com/benzjeremy/goatimtable/issues) tab.
 2. Click **New Issue**.
 3. Briefly describe:
    - Operating system and desktop environment.
@@ -152,13 +152,13 @@ Bug reports and contributions are welcome:
 ## 📚 Wiki & Documentation
 
 Detailed documentation and step-by-step guides are available in our official web wiki:  
-👉 **[untis-go Wiki: https://untis-go.benzjeremy.pp.ua/wiki/](https://untis-go.benzjeremy.pp.ua/wiki/)**
+👉 **[goatimtable Wiki: https://goatimtable.benzjeremy.pp.ua/wiki/](https://goatimtable.benzjeremy.pp.ua/wiki/)**
 
-- **Getting Started & Onboarding**: [Getting Started Guide](https://untis-go.benzjeremy.pp.ua/wiki/#quickstart)
-- **Feature Deep Dive**: [Timetables, Homework & Absences](https://untis-go.benzjeremy.pp.ua/wiki/#features)
-- **Installation**: [Linux & Windows Setup](https://untis-go.benzjeremy.pp.ua/wiki/#installation)
-- **Security Architecture**: [AES-256-GCM & PBKDF2](https://untis-go.benzjeremy.pp.ua/wiki/#security)
-- **FAQ & Troubleshooting**: [Frequently Asked Questions](https://untis-go.benzjeremy.pp.ua/wiki/#faq)
+- **Getting Started & Onboarding**: [Getting Started Guide](https://goatimtable.benzjeremy.pp.ua/wiki/#quickstart)
+- **Feature Deep Dive**: [Timetables, Homework & Absences](https://goatimtable.benzjeremy.pp.ua/wiki/#features)
+- **Installation**: [Linux & Windows Setup](https://goatimtable.benzjeremy.pp.ua/wiki/#installation)
+- **Security Architecture**: [AES-256-GCM & PBKDF2](https://goatimtable.benzjeremy.pp.ua/wiki/#security)
+- **FAQ & Troubleshooting**: [Frequently Asked Questions](https://goatimtable.benzjeremy.pp.ua/wiki/#faq)
 
 ---
 
@@ -166,3 +166,16 @@ Detailed documentation and step-by-step guides are available in our official web
 
 - **Developer:** Jeremy Benz ([@benzjeremy](https://github.com/benzjeremy))
 - **License:** [GNU General Public License v3.0 (GPL-3.0)](LICENSE)
+
+## Project rename
+
+untis-go is now **goatimtable**. This project remains in development (pre-release). Existing local data continues to use the legacy storage directory for compatibility.
+Users upgrading from v2.4.1 or earlier must download this release manually: the old updater only accepts the former repository path and executable name.
+
+## A personal note from Jeremy Benz
+
+> I decided we needed to rename untis-go to goatimtable to avoid potential intellectual-property and trademark issues. The previous name directly referenced Untis GmbH's brand. I wanted to make this change early, before it could lead to legal trouble. Same project, new name — thank you for sticking with it.
+>
+> — Jeremy Benz, project creator
+
+Windows icon resource: regenerate `app_windows_amd64.syso` after icon changes with `x86_64-w64-mingw32-windres app.rc -O coff -o app_windows_amd64.syso`.

@@ -7,7 +7,7 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/benzjeremy/untis-go/diff"
+	"github.com/benzjeremy/goatimtable/diff"
 )
 
 // SendNotification sends a native operating system notification
@@ -32,7 +32,7 @@ func NotifyLessonChange(change diff.LessonChange) error {
 
 func sendLinux(title, message string) error {
 	if path, err := exec.LookPath("notify-send"); err == nil {
-		cmd := exec.Command(path, "-a", "untis-go", "-i", "untis-go", "-u", "normal", title, message)
+		cmd := exec.Command(path, "-a", "goatimtable", "-i", "goatimtable", "-u", "normal", title, message)
 		if err := cmd.Run(); err != nil {
 			log.Printf("[Notify] notify-send error: %v\n", err)
 			return err

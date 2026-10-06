@@ -9,7 +9,7 @@ import (
 
 // LaunchGUI opens the system browser in app mode on Windows
 func LaunchGUI(title, url string, width, height int, forceBrowser bool) {
-	log.Println("[GUI] Starte Untis Desktop im Anwendungsmodus unter Windows...")
+	log.Println("[GUI] Starte goatimtable im Anwendungsmodus unter Windows...")
 	OpenBrowser(url)
 }
 

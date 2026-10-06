@@ -5,7 +5,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/benzjeremy/untis-go/api"
+	"github.com/benzjeremy/goatimtable/api"
 )
 
 // EscapeText escapes special characters according to RFC 5545 section 3.3.11
@@ -38,7 +38,7 @@ func FormatDateTime(dateStr, timeStr string) string {
 // ExportTimetable generates standard RFC 5545 iCalendar (.ics) content from enriched lessons
 func ExportTimetable(lessons []api.EnrichedLesson, calendarTitle string) string {
 	if calendarTitle == "" {
-		calendarTitle = "Untis Stundenplan"
+		calendarTitle = "goatimtable"
 	}
 
 	var b strings.Builder
@@ -46,7 +46,7 @@ func ExportTimetable(lessons []api.EnrichedLesson, calendarTitle string) string 
 
 	b.WriteString("BEGIN:VCALENDAR\r\n")
 	b.WriteString("VERSION:2.0\r\n")
-	b.WriteString("PRODID:-//Jeremy Benz//untis-go//DE\r\n")
+	b.WriteString("PRODID:-//Jeremy Benz//goatimtable//DE\r\n")
 	b.WriteString("CALSCALE:GREGORIAN\r\n")
 	b.WriteString("METHOD:PUBLISH\r\n")
 	b.WriteString(fmt.Sprintf("X-WR-CALNAME:%s\r\n", EscapeText(calendarTitle)))

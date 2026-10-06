@@ -1,4 +1,4 @@
-// i18n.js - Simple internationalization for Untis GO
+// i18n.js - Simple internationalization for goatimtable
 const i18n = {
     languages: ['en', 'de'],
     defaultLang: 'en',

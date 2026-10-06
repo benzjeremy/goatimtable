@@ -51,11 +51,11 @@ var httpClient = &http.Client{
 
 // CheckForUpdate queries GitHub for the latest release (including pre-releases)
 func CheckForUpdate(currentVersion string) (*ReleaseInfo, error) {
-	req, err := http.NewRequest("GET", "https://api.github.com/repos/benzjeremy/untis-go/releases", nil)
+	req, err := http.NewRequest("GET", "https://api.github.com/repos/benzjeremy/goatimtable/releases", nil)
 	if err != nil {
 		return nil, fmt.Errorf("fehler beim Erstellen der Update-Anfrage: %w", err)
 	}
-	req.Header.Set("User-Agent", "untis-go-updater/"+currentVersion)
+	req.Header.Set("User-Agent", "goatimtable-updater/"+currentVersion)
 	req.Header.Set("Accept", "application/vnd.github.v3+json")
 
 	resp, err := httpClient.Do(req)
@@ -166,7 +166,7 @@ func ApplyUpdate(downloadURL string) error {
 	if err != nil {
 		return fmt.Errorf("anfrage konnte nicht erstellt werden: %w", err)
 	}
-	req.Header.Set("User-Agent", "untis-go-updater")
+	req.Header.Set("User-Agent", "goatimtable-updater")
 
 	resp, err := httpClient.Do(req)
 	if err != nil {
@@ -201,7 +201,7 @@ func ApplyUpdate(downloadURL string) error {
 	}
 
 	if len(newBinary) == 0 {
-		return fmt.Errorf("keine gültige untis-go binary im archiv gefunden")
+		return fmt.Errorf("keine gültige goatimtable binary im archiv gefunden")
 	}
 
 	// Replace executable
@@ -226,11 +226,11 @@ func extractFromTarGz(data []byte) ([]byte, error) {
 		}
 
 		baseName := filepath.Base(header.Name)
-		if baseName == "untis-go" || baseName == "untis-go.exe" {
+		if baseName == "goatimtable" || baseName == "goatimtable.exe" {
 			return io.ReadAll(tr)
 		}
 	}
-	return nil, fmt.Errorf("binary untis-go nicht im .tar.gz gefunden")
+	return nil, fmt.Errorf("binary goatimtable nicht im .tar.gz gefunden")
 }
 
 func extractFromZip(data []byte) ([]byte, error) {
@@ -241,7 +241,7 @@ func extractFromZip(data []byte) ([]byte, error) {
 
 	for _, f := range zr.File {
 		baseName := filepath.Base(f.Name)
-		if baseName == "untis-go" || baseName == "untis-go.exe" {
+		if baseName == "goatimtable" || baseName == "goatimtable.exe" {
 			rc, err := f.Open()
 			if err != nil {
 				return nil, err
@@ -250,7 +250,7 @@ func extractFromZip(data []byte) ([]byte, error) {
 			return io.ReadAll(rc)
 		}
 	}
-	return nil, fmt.Errorf("binary untis-go nicht in der .zip datei gefunden")
+	return nil, fmt.Errorf("binary goatimtable nicht in der .zip datei gefunden")
 }
 
 func replaceExecutable(targetPath string, newContent []byte) error {

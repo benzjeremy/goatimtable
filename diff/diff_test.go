@@ -3,7 +3,7 @@ package diff
 import (
 	"testing"
 
-	"github.com/benzjeremy/untis-go/api"
+	"github.com/benzjeremy/goatimtable/api"
 )
 
 func TestCompareLessons(t *testing.T) {

@@ -15,17 +15,17 @@ import (
 	"sync"
 	"time"
 
-	"github.com/benzjeremy/untis-go/api"
-	"github.com/benzjeremy/untis-go/db"
-	"github.com/benzjeremy/untis-go/diff"
-	"github.com/benzjeremy/untis-go/ical"
-	"github.com/benzjeremy/untis-go/notify"
-	"github.com/benzjeremy/untis-go/updater"
-	"github.com/benzjeremy/untis-go/web"
+	"github.com/benzjeremy/goatimtable/api"
+	"github.com/benzjeremy/goatimtable/db"
+	"github.com/benzjeremy/goatimtable/diff"
+	"github.com/benzjeremy/goatimtable/ical"
+	"github.com/benzjeremy/goatimtable/notify"
+	"github.com/benzjeremy/goatimtable/updater"
+	"github.com/benzjeremy/goatimtable/web"
 )
 
 // AppVersion defines the current application version
-const AppVersion = "2.4.1"
+const AppVersion = "2.5"
 
 // Server coordinates the local HTTP API and SQLite database
 type Server struct {
@@ -39,9 +39,9 @@ type Server struct {
 	stopSyncChan chan struct{}
 }
 
-// NewServer initializes the server with SQLite database and a 32-character crypto session token
+// NewServer initializes the server with SQLite database and a 32-byte crypto session token
 func NewServer(database *db.Database) *Server {
-	token := generateCryptoToken(16) // 16 bytes = 32 hex chars
+	token := generateCryptoToken(32) // 32 random bytes = 64 hex characters
 
 	s := &Server{
 		database:     database,
@@ -76,8 +76,7 @@ func NewServer(database *db.Database) *Server {
 func generateCryptoToken(bytesCount int) string {
 	b := make([]byte, bytesCount)
 	if _, err := rand.Read(b); err != nil {
-		// Fallback
-		return fmt.Sprintf("%x", time.Now().UnixNano())
+		panic("secure session token generation failed: " + err.Error())
 	}
 	return hex.EncodeToString(b)
 }
@@ -249,6 +248,8 @@ func (s *Server) Start(port int) (string, error) {
 
 // Stop terminates the server
 func (s *Server) Stop() error {
+	s.mu.Lock()
+	defer s.mu.Unlock()
 	if s.stopSyncChan != nil {
 		close(s.stopSyncChan)
 		s.stopSyncChan = nil
@@ -879,9 +880,9 @@ func (s *Server) handleTimetableExportICal(w http.ResponseWriter, r *http.Reques
 		}
 	}
 
-	title := "Untis Stundenplan"
+	title := "goatimtable"
 	if className != "" {
-		title = fmt.Sprintf("Untis Stundenplan - %s", className)
+		title = fmt.Sprintf("goatimtable - %s", className)
 	}
 
 	icsContent := ical.ExportTimetable(lessons, title)
@@ -974,7 +975,8 @@ func (s *Server) checkTimetableSync() ([]diff.LessonChange, error) {
 
 // startBackgroundSyncLoop runs a periodic background daemon checking for timetable changes
 func (s *Server) startBackgroundSyncLoop() {
-	s.stopSyncChan = make(chan struct{})
+	stopSync := make(chan struct{})
+	s.stopSyncChan = stopSync
 	intervalMinutes := s.database.GetIntSetting("sync_interval_minutes", 15)
 	if intervalMinutes < 1 {
 		intervalMinutes = 15
@@ -986,7 +988,7 @@ func (s *Server) startBackgroundSyncLoop() {
 		defer ticker.Stop()
 		for {
 			select {
-			case <-s.stopSyncChan:
+			case <-stopSync:
 				return
 			case <-ticker.C:
 				_, _ = s.checkTimetableSync()
@@ -2287,20 +2289,19 @@ func isValidGitHubReleaseURL(rawURL string) bool {
 		return false
 	}
 
-	// Must be in the benzjeremy/untis-go repository
-	if !strings.HasPrefix(u.Path, "/benzjeremy/untis-go/releases/download/") {
+	// Must be in the benzjeremy/goatimtable repository
+	if !strings.HasPrefix(u.Path, "/benzjeremy/goatimtable/releases/download/") {
 		return false
 	}
 
 	// Must have a file extension that indicates a release asset
 	pathLower := strings.ToLower(u.Path)
 	if !strings.HasSuffix(pathLower, ".tar.gz") &&
-	   !strings.HasSuffix(pathLower, ".tgz") &&
-	   !strings.HasSuffix(pathLower, ".zip") &&
-	   !strings.HasSuffix(pathLower, ".exe") {
+		!strings.HasSuffix(pathLower, ".tgz") &&
+		!strings.HasSuffix(pathLower, ".zip") &&
+		!strings.HasSuffix(pathLower, ".exe") {
 		return false
 	}
 
 	return true
 }
-

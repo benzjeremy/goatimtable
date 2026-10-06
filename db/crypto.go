@@ -47,6 +47,10 @@ func getMachineID() string {
 
 // deriveKeyWithSalt generates a 32-byte key for AES-256 using PBKDF2 with the specified salt
 func deriveKeyWithSalt(salt []byte) ([]byte, error) {
+	return deriveKeyWithIterations(salt, 100000)
+}
+
+func deriveKeyWithIterations(salt []byte, iterations int) ([]byte, error) {
 	machID := getMachineID()
 
 	username := os.Getenv("USER")
@@ -60,7 +64,7 @@ func deriveKeyWithSalt(salt []byte) ([]byte, error) {
 
 	homeDir, _ := os.UserHomeDir()
 
-	// Use PBKDF2 with SHA256, 100000 iterations, and 32-byte key length
+	// New ciphertext uses 1,000,000 iterations; legacy readers retain 100,000.
 	// This is much more resistant to brute-force attacks than plain SHA256
 	var data []byte
 	data = append(data, salt...)
@@ -68,7 +72,7 @@ func deriveKeyWithSalt(salt []byte) ([]byte, error) {
 	data = append(data, []byte(username)...)
 	data = append(data, []byte(homeDir)...)
 
-	key := pbkdf2.Key(data, salt, 100000, 32, sha256.New)
+	key := pbkdf2.Key(data, salt, iterations, 32, sha256.New)
 	return key, nil
 }
 
@@ -78,15 +82,19 @@ func DeriveKey() ([]byte, error) {
 }
 
 // EncryptPassword encrypts a plaintext password using AES-256-GCM
-// It returns a base64-encoded string containing [12-byte nonce][ciphertext + 16-byte tag]
+// The g2 envelope contains a random 32-byte salt followed by nonce and authenticated ciphertext.
 func EncryptPassword(plaintext string) (string, error) {
 	if plaintext == "" {
 		return "", nil
 	}
 
-	key, err := DeriveKey()
+	salt := make([]byte, 32)
+	if _, err := rand.Read(salt); err != nil {
+		return "", err
+	}
+	key, err := deriveKeyWithIterations(salt, 1000000)
 	if err != nil {
-		return "", fmt.Errorf("failed to derive encryption key: %w", err)
+		return "", err
 	}
 
 	block, err := aes.NewCipher(key)
@@ -106,7 +114,7 @@ func EncryptPassword(plaintext string) (string, error) {
 
 	// Seal appends ciphertext and authentication tag to nonce
 	ciphertext := gcm.Seal(nonce, nonce, []byte(plaintext), nil)
-	return base64.StdEncoding.EncodeToString(ciphertext), nil
+	return "g2:" + base64.StdEncoding.EncodeToString(append(salt, ciphertext...)), nil
 }
 
 // decryptWithKey attempts to decrypt ciphertext using a given key
@@ -139,6 +147,18 @@ func decryptWithKey(key []byte, raw []byte) (string, error) {
 func DecryptPassword(encoded string) (string, error) {
 	if encoded == "" {
 		return "", nil
+	}
+
+	if strings.HasPrefix(encoded, "g2:") {
+		raw, err := base64.StdEncoding.DecodeString(strings.TrimPrefix(encoded, "g2:"))
+		if err != nil || len(raw) < 60 {
+			return "", ErrInvalidCiphertext
+		}
+		key, err := deriveKeyWithIterations(raw[:32], 1000000)
+		if err != nil {
+			return "", err
+		}
+		return decryptWithKey(key, raw[32:])
 	}
 
 	raw, err := base64.StdEncoding.DecodeString(encoded)

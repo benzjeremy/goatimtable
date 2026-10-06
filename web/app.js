@@ -1,5 +1,5 @@
 /* ==========================================================================
-   UNTIS DESKTOP APP - CLIENT APPLICATION LOGIC
+   GOATIMTABLE DESKTOP APP - CLIENT APPLICATION LOGIC
    ========================================================================== */
 
 (function () {
@@ -290,7 +290,7 @@
     const ttControls = document.getElementById('topbarTimetableControls');
 
     const metaMap = {
-      'dashboard': { title: 'Übersicht', desc: 'Willkommen in deiner persönlichen Untis-Zentrale' },
+      'dashboard': { title: 'Übersicht', desc: 'Willkommen in deiner persönlichen goatimtable-Zentrale' },
       'own-timetable': { title: 'Mein Stundenplan', desc: 'Persönlicher Schüler-Stundenplan' },
       'other-timetables': { title: 'Weitere Stundenpläne', desc: 'Klassen, Lehrkräfte und Fachräume' },
       'homework': { title: 'Hausaufgaben', desc: 'WebUntis Aufgaben & eigene Notizen' },
@@ -368,13 +368,13 @@
       userAvatarEl.textContent = initials || 'U';
     }
 
-    // Dynamic window title: Untis Stundenplan - <Schule> - <Schülername>
+    // Dynamic window title: goatimtable - <Schule> - <Schülername>
     if (school && displayName) {
-      document.title = `Untis Stundenplan - ${school} - ${displayName}`;
+      document.title = `goatimtable - ${school} - ${displayName}`;
     } else if (school) {
-      document.title = `Untis Stundenplan - ${school}`;
+      document.title = `goatimtable - ${school}`;
     } else {
-      document.title = 'Untis Stundenplan';
+      document.title = 'goatimtable';
     }
 
     // Load custom subject aliases
@@ -2491,7 +2491,7 @@
         }
       } else {
         if (!silent) {
-          showToast(`Untis Desktop ist auf dem neuesten Stand (${res?.currentVersion || 'aktuell'}).`);
+          showToast(`goatimtable ist auf dem neuesten Stand (${res?.currentVersion || 'aktuell'}).`);
         }
       }
     } catch (e) {
@@ -2515,7 +2515,7 @@
 
     if (currVerEl) currVerEl.textContent = availableUpdateInfo.currentVersion || 'v1.3.1';
     if (newVerEl) newVerEl.textContent = availableUpdateInfo.latestVersion || 'v1.3.1';
-    if (titleEl) titleEl.textContent = availableUpdateInfo.title || `Untis Desktop ${availableUpdateInfo.latestVersion}`;
+    if (titleEl) titleEl.textContent = availableUpdateInfo.title || `goatimtable ${availableUpdateInfo.latestVersion}`;
     if (notesEl) notesEl.textContent = availableUpdateInfo.releaseNotes || 'Keine Versionshinweise verfügbar.';
 
     if (progWrap) progWrap.style.display = 'none';
@@ -2570,6 +2570,15 @@
   // ==================== ÜBER & INFO MODULE ====================
   const APP_RELEASES = [
     {
+      version: 'v2.5', title: 'goatimtable v2.5', type: 'release', date: '06.10.2026', badge: 'Pre-release v2.5',
+      description: 'Neuer Projektname, eigenes Icon und aktualisierte Website. Bestehende lokale Daten bleiben lesbar.',
+      sections: [{ title: 'Umbenennung & Wartung', items: [
+        { type: 'feat', text: 'untis-go heißt jetzt goatimtable. Oberfläche, Desktop-Icon und Updatequelle verwenden den neuen Namen.' },
+        { type: 'security', text: 'Neue Verschlüsselungen verwenden 1.000.000 PBKDF2-Iterationen; Altdaten bleiben lesbar. Sitzungs-Token verwenden 32 Zufallsbytes.' },
+        { type: 'fix', text: 'Nebenläufigkeitsfehler beim Beenden der Hintergrundsynchronisierung behoben.' }
+      ] }]
+    },
+    {
       version: 'v2.4.1',
       title: 'Release v2.4.1 – SQLite Persistenz-Purge & Datenschutz-Härtung',
       type: 'hotfix',
@@ -2580,7 +2589,7 @@
         {
           title: '🔐 Datenschutz & Persistenz-Bereinigung',
           items: [
-            { type: 'security', text: '<strong>Automatischer SQLite-Purge:</strong> Beim Starten von untis-go werden verbliebene historische Microsoft-Tokens (Access/Refresh-Token, E-Mail-Adressen, Kontodaten) automatisch und unwiderruflich aus der lokalen Datenbank gelöscht.' },
+            { type: 'security', text: '<strong>Automatischer SQLite-Purge:</strong> Beim Starten von goatimtable werden verbliebene historische Microsoft-Tokens (Access/Refresh-Token, E-Mail-Adressen, Kontodaten) automatisch und unwiderruflich aus der lokalen Datenbank gelöscht.' },
             { type: 'security', text: '<strong>API-Härtung:</strong> Sperre gegen das Setzen oder Auslesen von <code>ms_*</code>-Schlüsseln in <code>/api/settings</code>.' },
             { type: 'security', text: '<strong>Release-History Bereinigung:</strong> Vollständige Korrektur aller historischen Release-Texte in der internen Info- & Release-Zentrale.' }
           ]
@@ -2593,7 +2602,7 @@
       type: 'major',
       date: '25.09.2026',
       badge: 'Release v2.4',
-      description: 'Vollständige und radikale Bereinigung aller verbliebenen Frontend-Modale, Gatekeeper-Skripte und Microsoft/OneDrive-Reste. untis-go ist 100% autark, frei von Drittanbieter-Code und strikt datenschutzkonform.',
+      description: 'Vollständige und radikale Bereinigung aller verbliebenen Frontend-Modale, Gatekeeper-Skripte und Microsoft/OneDrive-Reste. goatimtable ist 100% autark, frei von Drittanbieter-Code und strikt datenschutzkonform.',
       sections: [
         {
           title: '🧹 Radikale Frontend-Bereinigung',
@@ -2657,7 +2666,7 @@
         {
           title: '🐧 Native Linux & Wayland Icon-Integration',
           items: [
-            { type: 'feat', text: '<strong>Automatisches Desktop- & Icon-Setup:</strong> Die App registriert sich beim Start selbstständig in den XDG-Icon-Verzeichnissen (<code>~/.local/share/icons</code> und <code>~/.local/share/applications/untis-go.desktop</code>).' },
+            { type: 'feat', text: '<strong>Automatisches Desktop- & Icon-Setup:</strong> Die App registriert sich beim Start selbstständig in den XDG-Icon-Verzeichnissen (<code>~/.local/share/icons</code> und <code>~/.local/share/applications/goatimtable.desktop</code>).' },
             { type: 'fix', text: '<strong>Wayland W-Icon behoben:</strong> In Wayland-Umgebungen (KDE Plasma, GNOME) wird das Untis-Logo nun sauber und gestochen scharf in der Fenster-Titelleiste, im Task-Manager und bei Alt+Tab dargestellt.' },
           ]
         }
@@ -2763,14 +2772,14 @@
             { type: 'feat', text: '<strong>3-stufiger Onboarding Setup-Wizard:</strong> Beim allerersten Start führt ein eleganter Wizard Schritt für Schritt durch die Einrichtung: Schulsuche mit Live-Filterung, Login-Auswahl (Konto oder Gast) und Feature-Einführung.' },
             { type: 'feat', text: '<strong>1-Klick Anonymer Gast-Login:</strong> Wie in der offiziellen WebUntis Mobile-App oder im Webbrowser kann der Stundenplan einer Schule komplett ohne Benutzername und Passwort eingesehen werden – ideal für Vertretungspläne und öffentliche Klassen.' },
             { type: 'feat', text: '<strong>Modernisiertes Dashboard & Hero-Countdown:</strong> Markanter oranger Countdown-Hero-Header mit Live-Zeitanzeige bis zum Schulbeginn/Unterrichtsende, hervorgehobene nächste Unterrichtsstunde ("Next Up") und stylische Lehrer- & Raumpillen.' },
-            { type: 'feat', text: '<strong>Interaktives Web-Wiki & Dokumentation:</strong> Umfassende Schritt-für-Schritt-Anleitung unter <a href="https://benzjeremy.github.io/untis-go/wiki/" target="_blank" rel="noopener">benzjeremy.github.io/untis-go/wiki</a> mit 12 Kapiteln und visuellen App-Mockups.' },
+            { type: 'feat', text: '<strong>Interaktives Web-Wiki & Dokumentation:</strong> Umfassende Schritt-für-Schritt-Anleitung unter <a href="https://benzjeremy.github.io/goatimtable/wiki/" target="_blank" rel="noopener">benzjeremy.github.io/goatimtable/wiki</a> mit 12 Kapiteln und visuellen App-Mockups.' },
           ]
         },
         {
           title: '🔒 Sicherheit & Härtung',
           items: [
             { type: 'fix', text: '<strong>PBKDF2 Key-Derivation:</strong> Upgrade auf 100.000 SHA-256 Iterationen für unknackbare lokale Tresor-Verschlüsselung der Schulanmeldedaten.' },
-            { type: 'fix', text: '<strong>Auto-Updater Whitelist:</strong> Strenges Domain- und Pfad-Whitelisting (nur offizielle GitHub-Releases von benzjeremy/untis-go erlaubt) und Pfad-Traversal-Schutz.' },
+            { type: 'fix', text: '<strong>Auto-Updater Whitelist:</strong> Strenges Domain- und Pfad-Whitelisting (nur offizielle GitHub-Releases von benzjeremy/goatimtable erlaubt) und Pfad-Traversal-Schutz.' },
             { type: 'fix', text: '<strong>XSS-Prävention:</strong> Sichere DOM-Attribut-Übergabe in der Schulsuche verhindert Code-Injection.' },
             { type: 'fix', text: '<strong>Settings-Key Whitelist:</strong> Schutz vor unautorisiertem Überschreiben beliebiger lokaler Einstellungen.' },
           ]
@@ -2783,13 +2792,13 @@
       type: 'release',
       date: '04.09.2026',
       badge: 'Offizieller Release',
-      description: 'Erster offizieller Haupt-Release von untis-go! Einführung der interaktiven Info- & Release-Zentrale, Einbindung des offiziellen Marken-Icons, Wiederherstellung des Einzelstunden-Zeitrasters und Aufnahme in Awesome Go.',
+      description: 'Erster offizieller Haupt-Release von goatimtable! Einführung der interaktiven Info- & Release-Zentrale, Einbindung des offiziellen Marken-Icons, Wiederherstellung des Einzelstunden-Zeitrasters und Aufnahme in Awesome Go.',
       sections: [
         {
           title: '🚀 Features & Neuerungen',
           items: [
             { type: 'feat', text: '<strong>Dedizierte Info- & Release-Seite:</strong> Neuer Navigationsbereich "Über & Info" mit detaillierten Versionsangaben, exakter GitHub-Release-Historie, One-Click Update-Prüfung & Sofortinstallation, Nennung der Mitwirkenden (Jeremy Benz und KI-Pair-Programming-Assistenten Claude Code & Google Antigravity) sowie GNU General Public License v3 Lizenzhinweis.' },
-            { type: 'feat', text: '<strong>Aufnahme in Awesome Go (#6660):</strong> untis-go wurde offiziell in das renommierte Verzeichnis <a href="https://github.com/avelino/awesome-go#other-software" target="_blank" rel="noopener">Awesome Go</a> unter <em>Other Software</em> aufgenommen.' },
+            { type: 'feat', text: '<strong>Aufnahme in Awesome Go (#6660):</strong> goatimtable wurde offiziell in das renommierte Verzeichnis <a href="https://github.com/avelino/awesome-go#other-software" target="_blank" rel="noopener">Awesome Go</a> unter <em>Other Software</em> aufgenommen.' },
             { type: 'feat', text: '<strong>Offizielles Untis Marken-Icon:</strong> Einbindung des originalen transparenten Untis-Logos aus dem offiziellen Media-Kit für das native GTK-Desktop-Fenster, Web-App-Favicons (ICO & PNG 512x512) und App-Header.' },
             { type: 'feat', text: '<strong>Synchrone Stundenplan-Matrix & Einzelstunden-Raster:</strong> Wiederherstellung der linken Zeit- & Stundenleiste ("Std. / Zeit"). Mehrstündige Blockstunden (z.B. 4 Stunden am Stück) werden nun sauber und transparent auf jede einzelne Schulstunde aufgeteilt (1. Std., 2. Std., 3. Std., 4. Std.) statt unübersichtlicher Mischbezeichnungen wie "1/2" oder "2/3".' },
           ]
@@ -2906,7 +2915,7 @@
       type: 'beta',
       date: '03.09.2026',
       badge: 'BETA',
-      description: 'Erster öffentlicher BETA-Release von untis-go als blitzschneller nativer WebUntis Desktop-Client.',
+      description: 'Erster öffentlicher BETA-Release von goatimtable als blitzschneller nativer Webgoatimtable-Client.',
       sections: [
         {
           title: '✨ Kernfunktionen & Module',
@@ -2987,9 +2996,9 @@
       } else {
         if (installBtn) installBtn.style.display = 'none';
         if (msgEl) {
-          msgEl.innerHTML = `untis-go ist auf dem neuesten Stand (<strong>${escapeHTML(res?.currentVersion || 'v1.4')}</strong>).`;
+          msgEl.innerHTML = `goatimtable ist auf dem neuesten Stand (<strong>${escapeHTML(res?.currentVersion || 'v1.4')}</strong>).`;
         }
-        showToast(`untis-go ist auf dem neuesten Stand (${res?.currentVersion || 'v1.4'}).`);
+        showToast(`goatimtable ist auf dem neuesten Stand (${res?.currentVersion || 'v1.4'}).`);
       }
     } catch (e) {
       if (msgEl) msgEl.textContent = 'Fehler bei der Update-Prüfung.';
@@ -3376,7 +3385,7 @@
       const downloadUrl = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = downloadUrl;
-      a.download = 'untis_stundenplan.ics';
+      a.download = 'goatimtable.ics';
       document.body.appendChild(a);
       a.click();
       a.remove();

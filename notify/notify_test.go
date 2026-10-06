@@ -3,7 +3,7 @@ package notify
 import (
 	"testing"
 
-	"github.com/benzjeremy/untis-go/diff"
+	"github.com/benzjeremy/goatimtable/diff"
 )
 
 func TestNotifyLessonChange(t *testing.T) {
