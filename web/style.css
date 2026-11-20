@@ -3519,3 +3519,6 @@ input, textarea, select {
   color: var(--accent-primary);
   font-weight: 700;
 }
+
+:where(button,a,input,select):focus-visible { outline: 3px solid #efbe66; outline-offset: 3px; }
+@media (pointer: coarse) { button, select { min-height: 44px; } }

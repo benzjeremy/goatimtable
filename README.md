@@ -1,5 +1,8 @@
 # 🗓️ goatimtable
 
+**Projekt eingestellt.** v2.6 ist die letzte offizielle Version. Forks und Weiterentwicklung sind unter der beiliegenden GPLv3 willkommen. [Downloadarchiv](https://downloads.benzjeremy.pp.ua/goatimtable/).
+
+
 [![Go Reference](https://pkg.go.dev/badge/github.com/benzjeremy/goatimtable.svg)](https://pkg.go.dev/github.com/benzjeremy/goatimtable)
 [![Go Report Card](https://goreportcard.com/badge/github.com/benzjeremy/goatimtable.svg)](https://goreportcard.com/report/github.com/benzjeremy/goatimtable)
 [![Release](https://img.shields.io/github/v/release/benzjeremy/goatimtable)](https://github.com/benzjeremy/goatimtable/releases)

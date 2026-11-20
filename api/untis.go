@@ -109,33 +109,33 @@ type UserInfo struct {
 // EnrichedLesson is the high-level representation used by the frontend
 type EnrichedLesson struct {
 	ID              int      `json:"id"`
-	Date            string   `json:"date"`            // "2026-09-09"
-	DateInt         int      `json:"dateInt"`         // 20260909
-	DayOfWeek       string   `json:"dayOfWeek"`       // "Mittwoch"
-	Period          string   `json:"period"`          // "1. - 2. Stunde"
-	PeriodNum       int      `json:"periodNum"`       // 1
-	StartTimeStr    string   `json:"startTimeStr"`    // "07:30"
-	EndTimeStr      string   `json:"endTimeStr"`      // "09:00"
-	TimeRange       string   `json:"timeRange"`       // "07:30 - 09:00"
-	Subject         string   `json:"subject"`         // "LF09"
-	SubjectLong     string   `json:"subjectLong"`     // "LERNFELD 09"
+	Date            string   `json:"date"`         // "2026-09-09"
+	DateInt         int      `json:"dateInt"`      // 20260909
+	DayOfWeek       string   `json:"dayOfWeek"`    // "Mittwoch"
+	Period          string   `json:"period"`       // "1. - 2. Stunde"
+	PeriodNum       int      `json:"periodNum"`    // 1
+	StartTimeStr    string   `json:"startTimeStr"` // "07:30"
+	EndTimeStr      string   `json:"endTimeStr"`   // "09:00"
+	TimeRange       string   `json:"timeRange"`    // "07:30 - 09:00"
+	Subject         string   `json:"subject"`      // "LF09"
+	SubjectLong     string   `json:"subjectLong"`  // "LERNFELD 09"
 	OriginalSubject string   `json:"originalSubject,omitempty"`
-	Teacher         string   `json:"teacher"`         // "KHN"
-	TeacherLong     string   `json:"teacherLong"`     // "Kuhn, Thomas"
+	Teacher         string   `json:"teacher"`     // "KHN"
+	TeacherLong     string   `json:"teacherLong"` // "Kuhn, Thomas"
 	OriginalTeacher string   `json:"originalTeacher,omitempty"`
-	Room            string   `json:"room"`            // "D105, D305"
-	RoomLong        string   `json:"roomLong"`        // "Labor VR EIT, Labor IT"
+	Room            string   `json:"room"`     // "D105, D305"
+	RoomLong        string   `json:"roomLong"` // "Labor VR EIT, Labor IT"
 	OriginalRoom    string   `json:"originalRoom,omitempty"`
-	Class           string   `json:"class"`           // e.g. "10A"
-	IsCancelled     bool     `json:"isCancelled"`     // status == CANCELLED
-	IsSubstitution  bool     `json:"isSubstitution"`  // status == CHANGED or teacher replaced
-	IsRoomChange    bool     `json:"isRoomChange"`    // room changed
-	SubstText       string   `json:"substText"`       // substitution text
-	Notes           string   `json:"notes"`           // lesson notes
+	Class           string   `json:"class"`          // e.g. "10A"
+	IsCancelled     bool     `json:"isCancelled"`    // status == CANCELLED
+	IsSubstitution  bool     `json:"isSubstitution"` // status == CHANGED or teacher replaced
+	IsRoomChange    bool     `json:"isRoomChange"`   // room changed
+	SubstText       string   `json:"substText"`      // substitution text
+	Notes           string   `json:"notes"`          // lesson notes
 	TeachingContent string   `json:"teachingContent,omitempty"`
 	Homeworks       []string `json:"homeworks,omitempty"`
-	Color           string   `json:"color"`           // Hex color
-	TextColor       string   `json:"textColor"`       // Hex text color
+	Color           string   `json:"color"`     // Hex color
+	TextColor       string   `json:"textColor"` // Hex text color
 }
 
 // Client represents the real WebUntis API client
@@ -247,7 +247,7 @@ func SearchSchool(query string) ([]SchoolSearchResult, error) {
 		return nil, err
 	}
 
-	resp, err := http.Post("https://schoolsearch.webuntis.com/schoolquery2", "application/json", bytes.NewReader(jsonData))
+	resp, err := (&http.Client{Timeout: 15 * time.Second}).Post("https://schoolsearch.webuntis.com/schoolquery2", "application/json", bytes.NewReader(jsonData))
 	if err != nil {
 		return nil, fmt.Errorf("schoolsearch network error: %w", err)
 	}
@@ -1233,16 +1233,16 @@ func (c *Client) GetTimetableForResource(resourceType string, resourceID int, st
 					Start string `json:"start"`
 					End   string `json:"end"`
 				} `json:"duration"`
-				Type             string `json:"type"`
-				Status           string `json:"status"`
-				SubstitutionText string `json:"substitutionText"`
-				LessonText       string `json:"lessonText"`
-				Color            string `json:"color"`
-				Position1 []rawGridPosItem `json:"position1"`
-				Position2 []rawGridPosItem `json:"position2"`
-				Position3 []rawGridPosItem `json:"position3"`
-				Position4 []rawGridPosItem `json:"position4"`
-				LessonInfo string           `json:"lessonInfo"`
+				Type             string           `json:"type"`
+				Status           string           `json:"status"`
+				SubstitutionText string           `json:"substitutionText"`
+				LessonText       string           `json:"lessonText"`
+				Color            string           `json:"color"`
+				Position1        []rawGridPosItem `json:"position1"`
+				Position2        []rawGridPosItem `json:"position2"`
+				Position3        []rawGridPosItem `json:"position3"`
+				Position4        []rawGridPosItem `json:"position4"`
+				LessonInfo       string           `json:"lessonInfo"`
 			} `json:"gridEntries"`
 		} `json:"days"`
 	}
@@ -1661,9 +1661,9 @@ func (c *Client) fetchPublicTimetable(resourceType string, resourceID int, start
 						PeriodInfo string `json:"periodInfo"`
 						CellState  string `json:"cellState"`
 						Elements   []struct {
-							Type  int  `json:"type"`
-							ID    int  `json:"id"`
-							OrgID int  `json:"orgId"`
+							Type  int `json:"type"`
+							ID    int `json:"id"`
+							OrgID int `json:"orgId"`
 						} `json:"elements"`
 					} `json:"elementPeriods"`
 					Elements []struct {
